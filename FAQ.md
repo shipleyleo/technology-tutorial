@@ -1,18 +1,30 @@
 # git代理设置方法解决：
+### 取消代理
+
     git config --global --unset http.proxy
     git config --global --unset https.proxy
 
     参考：
     https://blog.csdn.net/yihui8/article/details/108372441
 
+### 设置代理
+  Git提交报错："Failed to connect to github.com port 443: Timed out" 的解决方案：
 
-<br>
+    git config --global http.proxy
+    git config --global https.proxy
 
-Git提交报错："OpenSSL SSL_read: Connection was reset, errno 10054" 的解决方案：
+    参考：
+    jianshu.com/p/41b525b3eeb1
+
+### 解除SSL验证
+  Git提交报错："OpenSSL SSL_read: Connection was reset, errno 10054" 的解决方案：
 
     git config --global http.sslVerify "false"
 
-    参考：https://blog.csdn.net/qq_29493173/article/details/114534057
+    参考：
+    https://blog.csdn.net/qq_29493173/article/details/114534057
+
+<br>
 
 # 查看git提交者：
     （1）项目设置：

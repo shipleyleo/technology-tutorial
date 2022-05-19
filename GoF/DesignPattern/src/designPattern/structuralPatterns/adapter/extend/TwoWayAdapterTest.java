@@ -8,14 +8,14 @@ package designPattern.structuralPatterns.adapter.extend;
  * Copyright:2022.All rights reserved.
  * </p>
  * <p>
- * Company:Zsoft
+ * Company:
  * </p>
  * <p>
  * CreateDate:2022/5/18
  * </p>
  *
- * @author liaoxiaopeng
- * @history Mender:liaoxiaopeng；Date:2022/5/18
+ * @author shipleyleo
+ * @history Mender:shipleyleo；Date:2022/5/18
  */
 //目标接口
 interface TwoWayTarget {

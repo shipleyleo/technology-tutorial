@@ -1,5 +1,6 @@
 # git代理设置方法解决：
 ### 取消代理
+  Git提交报错："Failed to connect to github.com port 443: Timed out" 的解决方案：
 
     git config --global --unset http.proxy
     git config --global --unset https.proxy

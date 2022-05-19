@@ -6,6 +6,14 @@
     https://blog.csdn.net/yihui8/article/details/108372441
 
 
+<br>
+
+Git提交报错："OpenSSL SSL_read: Connection was reset, errno 10054" 的解决方案：
+
+    git config --global http.sslVerify "false"
+
+    参考：https://blog.csdn.net/qq_29493173/article/details/114534057
+
 # 查看git提交者：
     （1）项目设置：
     git config user.name "设置自己的名字"

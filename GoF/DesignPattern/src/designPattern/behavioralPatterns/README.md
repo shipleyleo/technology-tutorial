@@ -1,9 +1,9 @@
-### 设计模式分类三：行为型模式（Behavioral Patterns）
+## 设计模式分类三：行为型模式（Behavioral Patterns）
 这些设计模式特别关注对象之间的通信。
 
 <br>
 
-#### 行为型模式有11种，包括：
+### 行为型模式有11种，包括：
 - 责任链模式（Chain of Responsibility Pattern）
 - 命令模式（Command Pattern）
 - 解释器模式（Interpreter Pattern）

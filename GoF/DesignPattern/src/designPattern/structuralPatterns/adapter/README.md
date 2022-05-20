@@ -3,6 +3,10 @@
 
 <br>
 
+一种结构型设计模式
+
+<br>
+
 ### 一、模式的定义与特点
 **适配器模式**（Adapter）的定义如下：将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类能一起工作。适配器模式分为类结构型模式和对象结构型模式两种，前者类之间的耦合度比后者高，且要求程序员了解现有组件库中的相关组件的内部结构，所以应用相对较少些。
 
@@ -23,7 +27,7 @@
 
 对象适配器模式可釆用将现有组件库中已经实现的组件引入适配器类中，该类同时实现当前系统的业务接口。现在来介绍它们的基本结构。
 
-1. 模式的结构
+**1. 模式的结构**
 
 适配器模式（Adapter）包含以下主要角色。
 - 目标（Target）接口：当前系统业务所期待的接口，它可以是抽象类或接口。
@@ -36,15 +40,230 @@
 ###### 对象适配器模式的结构图:
 ![对象适配器模式的结构图](http://c.biancheng.net/uploads/allimg/181115/3-1Q1151046105A.gif "对象适配器模式")
 
+
+
+**2. 模式的实现**
+   
+(1) 类适配器模式的代码如下。
+
+```java
+package adapter;
+//目标接口
+interface Target
+{
+    public void request();
+}
+//适配者接口
+class Adaptee
+{
+    public void specificRequest()
+    {       
+        System.out.println("适配者中的业务代码被调用！");
+    }
+}
+//类适配器类
+class ClassAdapter extends Adaptee implements Target
+{
+    public void request()
+    {
+        specificRequest();
+    }
+}
+//客户端代码
+public class ClassAdapterTest
+{
+    public static void main(String[] args)
+    {
+        System.out.println("类适配器模式测试：");
+        Target target = new ClassAdapter();
+        target.request();
+    }
+}
+```
+
+(2)对象适配器模式的代码如下。
+```java
+package adapter;
+//对象适配器类
+class ObjectAdapter implements Target
+{
+    private Adaptee adaptee;
+    public ObjectAdapter(Adaptee adaptee)
+    {
+        this.adaptee=adaptee;
+    }
+    public void request()
+    {
+        adaptee.specificRequest();
+    }
+}
+//客户端代码
+public class ObjectAdapterTest
+{
+    public static void main(String[] args)
+    {
+        System.out.println("对象适配器模式测试：");
+        Adaptee adaptee = new Adaptee();
+        Target target = new ObjectAdapter(adaptee);
+        target.request();
+    }
+}
+```
+
 <br>
 
 ### 三、模式的应用实例
 ###### 发动机适配器的结构图:
 ![发动机适配器的结构图](http://c.biancheng.net/uploads/allimg/181115/3-1Q115104I22F.gif "发动机适配器")
 
+MotorAdapterTest.java
+```java
+package adapter;
+//目标：发动机
+interface Motor
+{
+    public void drive();
+}
+//适配者1：电能发动机
+class ElectricMotor
+{
+    public void electricDrive()
+    {
+        System.out.println("电能发动机驱动汽车！");
+    }
+}
+//适配者2：光能发动机
+class OpticalMotor
+{
+    public void opticalDrive()
+    {
+        System.out.println("光能发动机驱动汽车！");
+    }
+}
+//电能适配器
+class ElectricAdapter implements Motor
+{
+    private ElectricMotor emotor;
+    public ElectricAdapter()
+    {
+        emotor=new ElectricMotor();
+    }
+    public void drive()
+    {
+        emotor.electricDrive();
+    }
+}
+//光能适配器
+class OpticalAdapter implements Motor
+{
+    private OpticalMotor omotor;
+    public OpticalAdapter()
+    {
+        omotor=new OpticalMotor();
+    }
+    public void drive()
+    {
+        omotor.opticalDrive();
+    }
+}
+//客户端代码
+public class MotorAdapterTest
+{
+    public static void main(String[] args)
+    {
+        System.out.println("适配器模式测试：");
+        Motor motor=(Motor)ReadXML.getObject();
+        motor.drive();
+    }
+}
+```
+
+config.xml
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <className>ElectricAdapter</className>
+</config>
+```
+
 <br>
 
-### 四、模式的扩展
+### 四、模式的应用场景
+适配器模式（Adapter）通常适用于以下场景。
+- 以前开发的系统存在满足新系统功能需求的类，但其接口同新系统的接口不一致。
+- 使用第三方提供的组件，但组件接口定义和自己要求的接口定义不同。
+
+<br>
+
+### 五、模式的扩展
 ###### 双向适配器模式的结构图:
 ![双向适配器模式的结构图](http://c.biancheng.net/uploads/allimg/181115/3-1Q115104Q1604.gif "双向适配器模式")
 
+TwoWayAdapterTest.java
+```java
+package adapter;
+//目标接口
+interface TwoWayTarget
+{
+    public void request();
+}
+//适配者接口
+interface TwoWayAdaptee
+{
+    public void specificRequest();
+}
+//目标实现
+class TargetRealize implements TwoWayTarget
+{
+    public void request()
+    {
+        System.out.println("目标代码被调用！");
+    }
+}
+//适配者实现
+class AdapteeRealize implements TwoWayAdaptee
+{
+    public void specificRequest()
+    {
+        System.out.println("适配者代码被调用！");
+    }
+}
+//双向适配器
+class TwoWayAdapter  implements TwoWayTarget,TwoWayAdaptee
+{
+    private TwoWayTarget target;
+    private TwoWayAdaptee adaptee;
+    public TwoWayAdapter(TwoWayTarget target)
+    {
+        this.target=target;
+    }
+    public TwoWayAdapter(TwoWayAdaptee adaptee)
+    {
+        this.adaptee=adaptee;
+    }
+    public void request()
+    {
+        adaptee.specificRequest();
+    }
+    public void specificRequest()
+    {
+        target.request();
+    }
+}
+//客户端代码
+public class TwoWayAdapterTest
+{
+    public static void main(String[] args)
+    {
+        System.out.println("目标通过双向适配器访问适配者：");
+        TwoWayAdaptee adaptee=new AdapteeRealize();
+        TwoWayTarget target=new TwoWayAdapter(adaptee);
+        target.request();
+        System.out.println("-------------------");
+        System.out.println("适配者通过双向适配器访问目标：");
+        target=new TargetRealize();
+        adaptee=new TwoWayAdapter(target);
+        adaptee.specificRequest();
+    }
+}
+```

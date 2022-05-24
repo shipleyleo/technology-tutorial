@@ -11,7 +11,7 @@ class ApiApplicationTests {
     void contextLoads() {
         System.out.println("开始");
         Integer res = fun3(2,0,3);
-        Assert.assertEquals(7,res.intValue());
+        Assert.assertEquals(6,res.intValue());
         System.out.println("结束");
     }
 

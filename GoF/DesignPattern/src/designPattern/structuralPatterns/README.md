@@ -1,9 +1,9 @@
-### 设计模式分类二：结构型模式（Structural Patterns）
+## 设计模式分类二：结构型模式（Structural Patterns）
 这些设计模式关注类和对象的组合。继承的概念被用来组合接口和定义组合对象获得新功能的方式。
 
 <br>
 
-#### 结构型模式有7种，包括：
+### 结构型模式有7种，包括：
 - 适配器模式（Adapter Pattern）
 - 桥接模式（Bridge Pattern）
 - ~~过滤器模式（Filter、Criteria Pattern）~~

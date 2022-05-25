@@ -54,7 +54,6 @@ Git提交报错："OpenSSL SSL_read: Connection was reset, errno 10054" 的解�
 <br>
 
 # 三、如何解决Github网站打不开的问题
-    
     # 1、查看github.com的IP地址
     网址：https://github.com.ipaddress.com
 ![查看github.com的IP地址](https://upload-images.jianshu.io/upload_images/15580222-0d23a0a098ab8c92.png?imageMogr2/auto-orient/strip|imageView2/2/w/542/format/webp)
@@ -84,9 +83,15 @@ hosts文件：
 ```
 备注：hosts中主要增加“github.com”这个。
 
-其他原因与解决方案：有可能IP因多次推送失败后，被github纳入黑名单。解决方案是更改电脑ip地址。
-
 参考：
 [如何解决Github网站打不开的问题](https://www.jianshu.com/p/bf37776b4bb8)
+
+
+# 四、idea登录github账号失败问题
+    登录报错1：“身份验证数据无效。Connection refused: connect”。
+    
+    登录报错2：“fatal: unable to access 'https://github.com/xxx/xxx.git/': OpenSSL SSL_connect: Connection was reset in connection to github.com:443”。
+    
+    可能原因与解决方案：有可能IP因多次推送失败后，被github纳入黑名单。解决方案是更改电脑ip地址。
 
 
